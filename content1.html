@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn JavaScript - JavaTpoint Style</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px;
+        }
+        nav a:hover {
+            background-color: #575757;
+            border-radius: 5px;
+        }
+        #content {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #007BFF;
+        }
+        p, li {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        code, pre {
+            background-color: #f1f1f1;
+            padding: 10px;
+            display: block;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .nav-buttons {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .nav-buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav-buttons button:hover {
+            background-color: #0056b3;
+        }
+        #logout-btn {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #timer {
+            float: right;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Learn JavaScript - JavaTpoint Style
+        <div id="timer"></div>
+        <button id="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <nav>
+        <a href="#introduction">Introduction</a>
+        <a href="#variables">Variables</a>
+        <a href="#functions">Functions</a>
+        <a href="#arrays">Arrays</a>
+        <a href="#objects">Objects</a>
+    </nav>
+
+    <div id="content">
+        <!-- JavaScript Pages -->
+        <section id="introduction">
+            <h2>Introduction to JavaScript</h2>
+            <p>JavaScript is a versatile and powerful programming language primarily used for web development. It enables interactive and dynamic content on websites. JavaScript can run in both browsers and servers with the help of frameworks like Node.js.</p>
+            <p>Here are some fundamental aspects of JavaScript:</p>
+            <ul>
+                <li>Dynamic typing</li>
+                <li>First-class functions</li>
+                <li>Prototypal inheritance</li>
+            </ul>
+            <h3>Example:</h3>
+            <pre><code>
+// Simple JavaScript Example
+let greeting = "Hello, World!";
+console.log(greeting);  // Outputs: Hello, World!
+            </code></pre>
+        </section>
+
+        <section id="variables">
+            <h2>Variables in JavaScript</h2>
+            <p>Variables are containers for storing data values. In JavaScript, you can declare variables using <code>var</code>, <code>let</code>, and <code>const</code>.</p>
+            <h3>Declaring Variables:</h3>
+            <pre><code>
+// Using var, let, and const
+var name = "Alice";
+let age = 25;
+const country = "USA";
+            </code></pre>
+        </section>
+
+        <section id="functions">
+            <h2>Functions in JavaScript</h2>
+            <p>Functions are blocks of code designed to perform a particular task. They are reusable and can be called multiple times in a program.</p>
+            <h3>Example:</h3>
+            <pre><code>
+function add(a, b) {
+    return a + b;
+}
+console.log(add(5, 3));  // Outputs: 8
+            </code></pre>
+        </section>
+
+        <section id="arrays">
+            <h2>Arrays in JavaScript</h2>
+            <p>Arrays are used to store multiple values in a single variable. They can store any type of data, including other arrays.</p>
+            <h3>Example:</h3>
+            <pre><code>
+let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits[0]);  // Outputs: Apple
+            </code></pre>
+        </section>
+
+        <section id="objects">
+            <h2>Objects in JavaScript</h2>
+            <p>Objects are collections of key-value pairs. They allow you to store data in a structured manner.</p>
+            <h3>Example:</h3>
+            <pre><code>
+let car = {
+    make: "Toyota",
+    model: "Camry",
+    year: 2021
+};
+console.log(car.make);  // Outputs: Toyota
+            </code></pre>
+        </section>
+
+        <div class="nav-buttons">
+            <button onclick="scrollToSection('introduction')">Introduction</button>
+            <button onclick="scrollToSection('variables')">Variables</button>
+            <button onclick="scrollToSection('functions')">Functions</button>
+            <button onclick="scrollToSection('arrays')">Arrays</button>
+            <button onclick="scrollToSection('objects')">Objects</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 JavaScript Learning Platform | All rights reserved
+    </footer>
+
+    <script>
+        let secondsSpent = 0;
+
+        // Timer function
+        function updateTimer() {
+            secondsSpent++;
+            const minutes = Math.floor(secondsSpent / 60);
+            const seconds = secondsSpent % 60;
+            document.getElementById('timer').innerText = `Time Spent: ${minutes} minute(s) ${seconds} second(s)`;
+        }
+
+        // Scroll to section function
+        function scrollToSection(section) {
+            document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.setItem('timeSpent', secondsSpent);
+            window.location.href = 'logout.html';
+        }
+
+        // Start timer and update it every second
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
